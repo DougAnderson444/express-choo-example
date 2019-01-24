@@ -1,0 +1,23 @@
+{
+  "name": "browserify-middleware-hello-world",
+  "version": "0.1.0",
+  "description": "A demo project using browserify middleware.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "browserify-middleware": "7.0.0",
+    "express": "^4.12.4",
+    "choo": "^6.13.1",
+    "express-formidable": "^1.2.0"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "license": "MIT"
+}
