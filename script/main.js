@@ -3,44 +3,16 @@ var choo = require('choo')
 var html = require('choo/html')
 var mods = require("./module");
 var stateAddresses = require('./showAddys')
-  
+var initState = require('./stores/initState')
+var mainStore = require('./stores/mainStore')
+
 var app = choo()
 
-app.use(function (state, emitter) {
-  state.domtext = 'Initial Dom Loaded '
-  //DOMContentLoaded only runs once, not when render is emitted
-  emitter.on('serverSync', function (){
-    //take the browser state and POST it to the server
-    const body = state.formData
-    const formValues = mods.objectFromFormData(state.formData)
-    console.log(formValues.bookName+' '+formValues.address)
-    fetch('/api', { method: 'POST', body })
-      .then(res => {
-        if (!res.ok) return alert('oh no!')
-          //alert('POST request ok ')
-          console.log('res json '+JSON.stringify(res.json())) //Promise
-      })
-      .catch(err => alert('oh no catch!'))
-    emitter.emit('render')
-    })
-  
-    emitter.on('DOMContentLoaded', function (){
-    //do something to the state upon the DOM being loaded
-    state.domtext = `Dom loaded ${(new Date()).toLocaleTimeString()}`
-    })
-})
-app.use(function (state) {
-  // use these initial state values
-  const addressName = "First Address"
-  const addressValue = "Ottawa"
-  state.addresses = []
-  state.addresses.push({addressName, addressValue})
-})
+app.use(initState)
+app.use(mainStore)
 app.route('/', testForm) //for POST tests
 //app.route('/', mainF) //for counter
 app.mount('body')
-
-document.write('hello ' + mods.addtwo(1, 3)+'<br>')
  
 function mainF (state, emit ) {
 

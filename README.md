@@ -8,3 +8,7 @@ So I use Browserify middleware package to insert the Browserify into the process
 I set the state defaults, then change them with the choo emitters. I then post back to the Nodejs server so that the server is synced with the browser state. The browse loads quickly, then the server updates behind it.
 
 This way the user should be able to use the app offline and when the netwok comes back, it'll sync back up again.
+
+# Fetch POST and Display Response Body
+In this demo, the choo form posts data to the Nodejs server using fetch, then shows the response below the form
+Enjoy!
