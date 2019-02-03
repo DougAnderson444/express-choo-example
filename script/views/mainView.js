@@ -1,7 +1,6 @@
 const html = require('choo/html')
 
-module.exports = mainView // { showAddresses }
-
+module.exports = mainView 
 
 function mainView (state, emit) {
   
@@ -44,7 +43,7 @@ function mainView (state, emit) {
   }
 
   function showAddresses() {
-    return html`<P>${(new Date()).toLocaleTimeString()}<br>${state.myaddress.bookName} - ${state.myaddress.address}</P>`
+    return html`${(new Date()).toLocaleTimeString()}<br>${state.myaddress.bookName} - ${state.myaddress.address}`
   }  
   
 }
