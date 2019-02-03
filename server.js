@@ -9,12 +9,11 @@ app.use('/js', browserify(__dirname + '/script'));
 app.use(express.static(__dirname + '/public'));
 app.use(formidableMiddleware()); //process form data first with this middleware
 
-app.all('/api', function(req,res){
+app.all('/api/v1', function(req,res){
   console.log('Form Fields: '+JSON.stringify(req.fields) + ' on api '+req.method+' hit successfully')
   //Object.keys(req.fields).forEach(e => console.log(`key=${e}, value=${req.fields[e]}`))
   Object.entries(req.fields).forEach(([key, value]) => {
     console.log(`Object Entry: ${key}: ${value}`)
-  
   })
   //save data to fs 
   //Dat.joinNetwork or 

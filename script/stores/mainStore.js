@@ -8,20 +8,19 @@ module.exports = function (state, emitter) {
     const body = state.formData
     const formValues = objectFromFormData(state.formData)
     //console.log(formValues.bookName+' '+formValues.address)
-    fetch('/api', { method: 'POST', body })
+    fetch('/api/v1', { method: 'POST', body })
       .then(res => {
         if (!res.ok) return console.log('oh no!')
           res.json().then(function(data) {
             // do something with your data
             //console.log(JSON.stringify(data, null, 2))
-            console.log('Pre-update: '+JSON.stringify(state.myaddress, null, 2))
+            //console.log('Pre-update: '+JSON.stringify(state.myaddress, null, 2))
             Object.entries(data).forEach(([key, value]) => {
               //console.log(`key ${key} value ${value}`)
               state.myaddress[key] = value
-              //console.log('In update: '+JSON.stringify(state.addresses, null, 2))
             })
-            console.log('Post update: '+JSON.stringify(state.myaddress, null, 2))
-            emitter.emit('render')
+            //console.log('Post update: '+JSON.stringify(state.myaddress, null, 2))
+            emitter.emit('render') //re-render the DOM in choo
           });
       })
       .catch(err => console.log('oh no catch!'))
