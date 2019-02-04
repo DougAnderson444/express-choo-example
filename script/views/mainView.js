@@ -30,7 +30,7 @@ function mainView (state, emit) {
           </p>
           <input type="submit" value="Submit" class="_2abd6af1">
         </form>
-        ${showAddresses()}
+        <div> ${showAddresses()} </div>
     </body>
   `
 
